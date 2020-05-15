@@ -1,23 +1,34 @@
-const {Given, When, Then} =require('cucumber')
+const {When, Then} =require('cucumber')
 const chai = require('chai')
-const expact = chai.expect;
+const expect = chai.expect
 const sinon = require('sinon')
-const axios = require('axios')
-
-Given('the book json data', function (dataTable) {
-    this.data = dataTable.hashes();
-    return 'pending';
+const bookDb = require('../../db/book')
+let book = {
+    save: function(){}
+}
+//let book
+let books
+When('call save method', ()=> {
+     books = {
+        title:"unix",
+        author:"def",
+        publisher:"mno",
+        pages:200
+    }
   });
 
-
-  When('I send POST request to {}', async (url) =>{
-  let URL = url;
-    return 'pending';
-  });
-
-
-  Then('{int} book will be created', function (int) {
-  // Then('{float} book will be created', function (float) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
+  Then('get response as created', async()=> {
+      console.log(books)
+    const saveStub = sinon.stub(book,"save").returns(books)
+    //const Book = await bookDb.saveBook(books)
+    //data = await bookDb.saveBook(books)
+    expect(Book.title).to.equal(books.title)
+    expect(Book.author).to.equal(books.author)
+    expect(Book.publisher).to.equal(books.publisher)
+    expect(Book.pages).to.equal(books.pages)
+    //expect(saveStub.calledOnce).to.be.true
+   // console.log(data)
+    //expect(data).to.equal(books)
+    //assert(data, books)
+    //expect(saveStub).to.have.been.c;
   });

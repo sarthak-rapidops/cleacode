@@ -17,6 +17,7 @@
     "cucumber-pretty": "^6.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.12",
+    "request": "^2.88.2",
     "sinon": "^9.0.2"
   }
 }
